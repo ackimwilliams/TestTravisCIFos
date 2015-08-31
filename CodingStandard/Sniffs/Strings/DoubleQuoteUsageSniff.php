@@ -35,7 +35,7 @@ class CodingStandard_Sniffs_Strings_DoubleQuoteUsageSniff implements PHP_CodeSni
 
         $workingString = $tokens[$stackPtr]['content'];
         $i = ($stackPtr + 1);
-        while ($tokens[$i]['code'] === $tokens[$stackPtr]['code']) {
+        while (!empty($tokens[$i]) && $tokens[$i]['code'] === $tokens[$stackPtr]['code']) {
             $workingString .= $tokens[$i]['content'];
             $i++;
         }

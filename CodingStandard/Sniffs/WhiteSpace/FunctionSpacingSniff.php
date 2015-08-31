@@ -103,7 +103,7 @@ class CodingStandard_Sniffs_WhiteSpace_FunctionSpacingSniff implements PHP_CodeS
 
             if ($tokens[$token]['code'] != T_WHITESPACE && $tokens[$token]['line'] == $line) {
                 $nextLine[] = $tokens[$token];
-            } elseif ($tokens[$token + 1]['code'] != T_CLOSE_CURLY_BRACKET) {
+            } elseif (!empty($tokens[$token + 1]) && $tokens[$token + 1]['code'] != T_CLOSE_CURLY_BRACKET) {
                 $nextLine[] = $tokens[$token];
             }
 
