@@ -11,6 +11,12 @@ env:
   global:
   - secure: Jo/OQRfDddRmzpUGUWhEo2DSokAIaeSZxZS4o0HT+/tG112dW4gjtlYNSVPc9P26BR8i6eRIw9lh2npFjC6TgzUUNEsZoQZ4y78mVkpsLBN9sChRZd5QgTFy/KMZpOiT3NOz8XMOrpgriPKT16nch77bRgbTBOMuLpiR7GrBqaNrLZWergKmoEBXFWDsnZuLm0lbgIqPCYjzXWLfpGFdhTUEXuLw0RmOvbzsPg0T9+o9HeMfxahS0as2bblqD7poNHslPxLAR25CTyumtYqmNZpOBAdMG3GV85doOJnU8lju+naLe1sc0i4i+LZM8S8tLvJYi6CUEEZlkWxJrmhhMJ8qOPvPDEvBsT3q4Tcz993aykbE4LWLS7M4d+UIcUHfL8lTf523jndUKS3F6cXmHhR5gpYA2QANOk3yCCEW/hQVf9oC1BUCCe6kLIa5XDXnVusYknB8EmN+1FHUbbCGV1qFzub76p1KAKFpT3/Tyo4TdIeC8i/4fsCrDQGYteBOSvKTdS1K1ciF9ydd5NXjW+dqg8WYgrINpzx16hCz57oWZsi/Bv4m3rkm1oGrge0iarey0a84jrf+ZSw5mlp/jFoDNZJPL35YQ5urSyLCHjP2StXk0Knh3EAi/7J1eR4CZx7nyXTmrK2OXdFHQD8UMI3TmkTBhG6D3YIxeJsvVcE=
 
+  - secure: S2C4BSYCUKiKsHIbKBYNnlnNsZq9vn7ScIjUO3vTaFKlYU24+sXPsMku7dZOME/d6WI1i2zlhZSeaB2Fp+fT0vgdBdfT9Q/WBkYHg+nKFRVpqqKURWBt7DZ27cRL10ML2AHJeJoq/QNYMEri9VUeKxfc1IHUHxkDMgJiwk1GFQ937NLDdKtkQDOHDsSMkhzqGnIO+ePo+64Ks+6yYbixeAK/EqBUfVl5gkDwNeUGeTxGihsGU7nCekLxut6nrzhY7VGz4ukLg0LRCmiy3vQPHkTmj96NtAWM/2YAw2COk9mG0WwXtplUIVo0GP+ZBDZQ3q0hcXUbKMsJye2zGxHUUCT250TyJIkGSVdq17OIUgQsXYrNYVnz2lDg3tiEGl8EdzB++NG90jiOVuoVyLmNUD78+2OK/aSWCGtxWoxYpeaCAvSborkUkaW5lBV9OJXHbtmJsRxi5y/QOBHzni+HueElTHryS/JG1gKmAulWldJKP0o+yTjWyWNKHk9kYPie5xTSnSkCrabYyNt1vUZLtfdHoRq1LSYb5xPh2XatC/IpA/JW08LqSwZ2bDNw8ReX/sla/Ddni+lEUBFHN7xE/r2dxSLLwvc5AGUJaAa2DpDRXsJd0ewWSLeqGiISP0zlXb31OkcXnDznkFWh/kirG4x75cY/AmzhQgGFUzf0Vy4=
+  - secure: nx1baGoSbjX3coaNJs0NLCajc2HgvgewVh8GeFDE2MCrPBhw/HrqRekecPp50Tod22LjUG4DM8mm+p5LgaWtyb/Gz+EfazIYtGWruRDGgT1/C8f82EE6tPZRNagib8wNm2K4rCl6Wktlea2Rt99Mn201K3FLKDPpUvLc8vC9yHR0gd6Lk0VkCpkeZQsMY72RtWdobWy74b41CjIoX8426tB8rmmTBmyf6YgLe9bdaLaIb8a0UIS+FYY1ezSA5EE1loDbltAl0Uhnz3L3vhmmRyCSGdUBWmCBei3/ycELX93l++6mjHkNvjFd+Xw8dYKi81U5zPTIVUMaRxYehXcwJ9i4QnI/jzF73WDx6411LstGUKWSIw8BvfKW8xTcsCoamawVD243dSr+ptrUM2VghcxQjHnDRm1GTlVm15MzWGX7i53G+T4BmcYpT/jaKVps4P51Zu13KJj3eKI8Xm4+S3CW0kpIyx6RBSL0NTU3lVY4iH/frtz40I7+g+faNXVhIa7YLm6oHirxf9Hc5DVw2P4/0fmTfJNdtB5xcxemXpd9lxhlP/M9HWPdwhmIc8o2HEELHVBIuv31zCiEhkns0ZGXTp53ZGktnP/t6aSkYk1fATWzaHQUsywFQVjIUXljH77VMW/5NVKrGxRZBHrnzkLnvCCJnfngXeviaxYC9eo=
+
+addons:
+  sauce_connect: true
+
 sudo: false
 
 cache:
@@ -46,7 +52,7 @@ install: composer update $COMPOSER_FLAGS --prefer-dist
 
 script: 
   - phpunit --coverage-clover=coverage.clover
-  - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=./CodingStandard -n  .
+  - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=./CodingStandard -n  ./Tests
 
 after_script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
