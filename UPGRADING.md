@@ -1,20 +1,3 @@
-    _Alternatively you can inject your own implementation. See http://symfony.com/doc/master/bundles/FOSRestBundle/2-the-view-layer.html#forms-and-views_
-
- * The ``format_listener`` configuration has changed to allow different settings per host/path.
-   Finally the signature of FormatNegotiatorInterface::getBestFormat() changed.
-
-### upgrading from 0.12.0
-
-* Route parameters cannot be set via setData anymore, please use a dedicated function `setRouteParameters` from now on
-
-### upgrading from 0.11.0
-
-* now requires JMSSerializerBundle 0.12
-* refactored the View class to drop the serializer specific methods in favor of setSerializationContext()
-* default version/groups will now only be applied if no SerializationContext was explicitly set on the View
-
-### upgrading from 0.10.0
-
 * now requires JMSSerializerBundle 1.0 (later renamed to 0.11) which is not compatible with Symfony2.0
 
 ### upgrading from 0.9.0
