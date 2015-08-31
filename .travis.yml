@@ -22,13 +22,13 @@ branches:
     - master
     - /^\d+\.\d+$/
 
-#notifications:
-#  hipchat:
-#    rooms:
-#      - [api token]@[room id or name]
-#    template:
-#      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
-#    notify: true
+notifications:
+  hipchat:
+    rooms:
+      - 5e997af0c12a6f9899bda0f1386224@88894_the_ackim_room
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+    notify: true
 
 matrix:
   fast_finish: true
