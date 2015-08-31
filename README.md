@@ -3,7 +3,7 @@ Ackim test Travis CI
 
 -- travis build statuses
 
-# [![Build Status](https://travis-ci.org/FriendsOfSymfony/FOSRestBundle.svg?branch=master)](https://travis-ci.org/FriendsOfSymfony/FOSRestBundle)
+# [![Build Status](https://travis-ci.org/ackimwilliams/TestTravisCIFos.svg?branch=master)](https://travis-ci.org/ackimwilliams/TestTravisCIFos)
 # [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/FriendsOfSymfony/FOSRestBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/FriendsOfSymfony/FOSRestBundle/?branch=master)
 # [![Code Coverage](https://scrutinizer-ci.com/g/FriendsOfSymfony/FOSRestBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/FriendsOfSymfony/FOSRestBundle/?branch=master)
 # [![Total Downloads](https://poser.pugx.org/FriendsOfSymfony/rest-bundle/downloads.svg)](https://packagist.org/packages/FriendsOfSymfony/rest-bundle)
