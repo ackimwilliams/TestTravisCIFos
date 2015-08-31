@@ -1,11 +1,15 @@
 language: php
 
 php:
-  - 5.4
-  - 5.5
+  #- 5.4
+  #- 5.5
   - 5.6
-  - 7.0
-  - hhvm
+  #- 7.0
+  #- hhvm
+
+env:
+  global:
+  - secure: Jo/OQRfDddRmzpUGUWhEo2DSokAIaeSZxZS4o0HT+/tG112dW4gjtlYNSVPc9P26BR8i6eRIw9lh2npFjC6TgzUUNEsZoQZ4y78mVkpsLBN9sChRZd5QgTFy/KMZpOiT3NOz8XMOrpgriPKT16nch77bRgbTBOMuLpiR7GrBqaNrLZWergKmoEBXFWDsnZuLm0lbgIqPCYjzXWLfpGFdhTUEXuLw0RmOvbzsPg0T9+o9HeMfxahS0as2bblqD7poNHslPxLAR25CTyumtYqmNZpOBAdMG3GV85doOJnU8lju+naLe1sc0i4i+LZM8S8tLvJYi6CUEEZlkWxJrmhhMJ8qOPvPDEvBsT3q4Tcz993aykbE4LWLS7M4d+UIcUHfL8lTf523jndUKS3F6cXmHhR5gpYA2QANOk3yCCEW/hQVf9oC1BUCCe6kLIa5XDXnVusYknB8EmN+1FHUbbCGV1qFzub76p1KAKFpT3/Tyo4TdIeC8i/4fsCrDQGYteBOSvKTdS1K1ciF9ydd5NXjW+dqg8WYgrINpzx16hCz57oWZsi/Bv4m3rkm1oGrge0iarey0a84jrf+ZSw5mlp/jFoDNZJPL35YQ5urSyLCHjP2StXk0Knh3EAi/7J1eR4CZx7nyXTmrK2OXdFHQD8UMI3TmkTBhG6D3YIxeJsvVcE=
 
 sudo: false
 
@@ -18,12 +22,20 @@ branches:
     - master
     - /^\d+\.\d+$/
 
+notifications:
+  hipchat:
+    rooms:
+      - 5e997af0c12a6f9899bda0f1386224@88894_the_ackim_room
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+    notify: true
+
 matrix:
   fast_finish: true
   include:
-    - php: 5.4
-      env: COMPOSER_FLAGS="--prefer-lowest"
-    - php: 5.5
+    # - php: 5.4
+    #  env: COMPOSER_FLAGS="--prefer-lowest"
+    - php: 5.6
       env: SYMFONY_VERSION='2.8.*@dev symfony/security-acl:2.8.*@dev'
 
 before_install:
@@ -32,8 +44,10 @@ before_install:
 
 install: composer update $COMPOSER_FLAGS --prefer-dist
 
-script: phpunit --coverage-clover=coverage.clover
+script: 
+  - phpunit --coverage-clover=coverage.clover
+  - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=./CodingStandard -n  .
 
 after_script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
+  - if [ "$TiRAVIS_PHP_VERSION" != "7.0" ]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi

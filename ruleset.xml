@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset name="Totom">
+    <description>The Totom coding standard.</description>
+
+    <rule ref="PSR2"/>
+
+    <rule ref="PSR1.Classes.ClassDeclaration">
+        <properties>
+            <property name="enforce_namespaces" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- Other nice things -->
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+
+    <rule ref="Generic.Metrics.CyclomaticComplexity">
+        <properties>
+            <property name="absoluteComplexity" value="99"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel"/>
+    <rule ref="Generic.Strings.UnnecessaryStringConcat">
+        <properties>
+            <property name="error" value="false"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+    <rule ref="Squiz.Classes.LowercaseClassKeywords"/>
+    <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
+    <rule ref="Squiz.Functions.FunctionDuplicateArgument"/>
+    <!--
+        Commenting out this check because it can't handle valid usage of count methods inside for loops
+        <rule ref="Squiz.PHP.DisallowSizeFunctionsInLoops"/>
+    -->
+    <rule ref="Squiz.PHP.DiscouragedFunctions"/>
+    <rule ref="Squiz.PHP.GlobalKeyword"/>
+    <rule ref="Squiz.PHP.InnerFunctions"/>
+    <rule ref="Squiz.PHP.LowercasePHPFunctions"/>
+    <rule ref="Squiz.PHP.NonExecutableCode"/>
+    <rule ref="Squiz.Scope.StaticThisUsage"/>
+    <rule ref="Squiz.WhiteSpace.CastSpacing"/>
+    <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+    <rule ref="CodingStandard.Strings.DoubleQuoteUsage"/>
+    <rule ref="CodingStandard.WhiteSpace.ControlStructureSpacing"/>
+    <rule ref="CodingStandard.WhiteSpace.OperatorSpacing"/>
+    <rule ref="CodingStandard.WhiteSpace.SwitchSpacing"/>
+    <rule ref="CodingStandard.WhiteSpace.FunctionSpacing"/>
+</ruleset>
+
