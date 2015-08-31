@@ -44,7 +44,9 @@ before_install:
 
 install: composer update $COMPOSER_FLAGS --prefer-dist
 
-script: phpunit --coverage-clover=coverage.clover
+script: 
+  - phpunit --coverage-clover=coverage.clover
+  - ./vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=./CodingStandard -n  .
 
 after_script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
